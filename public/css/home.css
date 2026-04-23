@@ -1,75 +1,100 @@
-/* ============================================
-   HOME.CSS — CLEAN & STABLE VERSION
-   ============================================ */
-
 /* ================= HERO ================= */
-.hero {
-    position: relative;
-    height: 520px;
-    overflow: hidden;
+
+.hero-section {
+    padding-top: 20px; /* Jarak dari header */
+    background: #fff;  /* Background luar tetap putih */
 }
 
-/* background full, tidak ikut container */
-.hero-image {
+.hero-wrapper {
+    position: relative;
+    width: 100%;
+    height: 460px;
+    border-radius: 20px; /* Opsional: agar sudut gambar melengkung sesuai estetika modern */
+    overflow: hidden;
+    background: #fce4ec;
+}
+
+/* Gambar Hero sekarang terbatas di dalam container */
+.hero-img {
     position: absolute;
     inset: 0;
-    z-index: 1;
-}
-
-.hero-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    z-index: 1;
 }
 
-/* overlay biar kontras */
-.hero::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.3);
-    z-index: 2;
-}
-
-/* layer content */
+/* Konten teks */
 .hero-content {
-    position: relative;
-    z-index: 3;
-    height: 100%;
-    display: flex;
-    align-items: center;
+    position: absolute;
+    z-index: 2;
+    left: 60px; /* Jarak teks dari pinggir gambar */
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 460px;
 }
 
-/* text fix (override global p) */
-.hero-text {
-    max-width: 500px;
-    color: #fff;
+.hero-eyebrow {
+    font-size: 13px;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: 500;
 }
 
-.hero-text p {
-    color: #eee; /* override global */
-}
-
-/* judul */
 .hero-title {
+    font-size: 38px;
+    font-weight: 700;
+    color: #111;
+    line-height: 1.2;
+    margin-bottom: 15px;
+}
+
+.hero-desc {
+    font-size: 14px;
+    color: #444;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.btn-hero {
+    display: inline-block;
+    background: #E8275A;
     color: #fff;
+    padding: 12px 35px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s;
 }
 
-/* tombol tetap kontras */
-.hero .btn-primary {
-    margin-top: 10px;
+.btn-hero:hover {
+    background: #c91e49;
+    transform: scale(1.05);
 }
-/* ================= SECTION TITLE ================= */
 
+/* Responsive Fix */
+@media (max-width: 768px) {
+    .hero-wrapper {
+        height: 350px;
+    }
+    .hero-content {
+        left: 30px;
+    }
+    .hero-title {
+        font-size: 28px;
+    }
+}
+
+
+/* ================= SECTION TITLE (center + garis bawah) ================= */
 .section-title {
-    text-align: center;
+    text-align: center;       /* << judul di tengah */
     font-size: 26px;
     font-weight: 600;
     color: var(--text);
-    margin-bottom: 40px;
-    position: relative;
+    margin-bottom: 36px;
 }
-
 .section-title::after {
     content: "";
     display: block;
@@ -80,173 +105,145 @@
     border-radius: 2px;
 }
 
-/* ================= CATEGORY ================= */
 
+/* ================= CATEGORY SECTION ================= */
 .section-categories {
     padding: 60px 0;
     background: #fff;
 }
 
-.category-grid-home {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+/* FIX override dari style.css */
+.section-categories .category-grid-home {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 16px;
+
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-/* CARD */
-.category-card-home {
-    background: #f8cdd6;
-    border-radius: 12px;
-    padding: 24px;
-    text-align: center;
-    transition: 0.25s;
-    cursor: pointer;
+/* Center baris ke-2 */
+.section-categories .category-grid-home a:nth-child(5) {
+    grid-column: 2 / 3;
+}
+.section-categories .category-grid-home a:nth-child(6) {
+    grid-column: 3 / 4;
+}
+.section-categories .category-grid-home a:nth-child(7) {
+    grid-column: 4 / 5;
 }
 
-.category-card-home:hover {
-    transform: translateY(-6px);
-}
 
-/* ICON */
-.category-card-home img {
-    width: 42px;
-    height: 42px;
-    object-fit: contain;
-    margin-bottom: 12px;
-}
-
-/* TEXT */
-.category-card-home span {
-    font-size: 14px;
-    font-weight: 500;
-    color: #333;
-}
-
-/* ================= BEST SELLER ================= */
-
+/* ================= BEST SELLER SECTION ================= */
 .section-bestseller {
     padding: 60px 0;
 }
-
 .section-bestseller .container {
     background: #f3d7dc;
     border-radius: 16px;
     padding: 40px;
 }
 
-/* ================= NEW PRODUCT ================= */
-
+/* ================= NEW PRODUCT SECTION ================= */
 .section-new {
     padding: 60px 0;
     background: #fff;
 }
-
-/* ================= PRODUCT ================= */
-
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+/* New product card lebih besar, background pink */
+.product-card-new {
+    background: #fce4ec !important;
+    border: none !important;
+}
+.product-card-new .product-card-body.center {
+    text-align: center;
+    padding: 14px;
+}
+.product-card-new .product-name {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+.product-card-new .price-new {
+    font-size: 18px;
+    color: var(--pink);
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: block;
 }
 
-/* CARD */
-.product-card {
-    background: #fff;
-    border-radius: 12px;
-    padding: 16px;
-    transition: 0.25s;
-    cursor: pointer;
-}
 
-.product-card:hover {
-    transform: translateY(-6px);
+/* ================= PRODUCT CARD FOOTER BUTTONS ================= */
+/* Tombol "Shop Now" + ikon cart berdampingan */
+.product-card-footer {
+    padding: 0 14px 14px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
 }
+.btn-shop-now {
+    flex: 1;
+    display: block;
+    text-align: center;
+    background: var(--pink);
+    color: #fff;
+    padding: 9px 14px;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    font-weight: 500;
+    transition: var(--transition);
+}
+.btn-shop-now:hover { background: var(--pink-hover); }
 
-/* IMAGE */
-.product-card-img img {
-    width: 100%;
-    height: 160px;
+.btn-cart-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: var(--pink);
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+    flex-shrink: 0;
+}
+.btn-cart-icon:hover { background: var(--pink-hover); }
+.btn-cart-icon img {
+    width: 18px;
+    height: 18px;
+    filter: invert(1);
     object-fit: contain;
 }
 
-/* BODY */
-.product-card-body {
-    margin-top: 10px;
-}
-
-/* CENTER (new product) */
-.product-card-body.center {
-    text-align: center;
-}
-
-/* TITLE */
-.product-name {
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 6px;
-}
-
-/* RATING */
-.product-rating {
+/* Tombol "View More" di new product */
+.btn-view-more {
+    display: inline-block;
+    background: var(--pink);
+    color: #fff;
+    padding: 8px 24px;
+    border-radius: 20px;
     font-size: 13px;
-    color: #666;
-    margin-bottom: 6px;
+    font-weight: 500;
+    transition: var(--transition);
+    margin-top: 4px;
 }
+.btn-view-more:hover { background: var(--pink-hover); }
 
-/* PRICE */
-.price-new {
-    color: var(--pink);
-    font-weight: 700;
-}
 
-.price-old {
-    text-decoration: line-through;
-    font-size: 12px;
-    color: #888;
-    margin-left: 6px;
-}
-
-/* BUTTON */
-.product-card-footer {
-    margin-top: 12px;
-}
-
-/* ================= RESPONSIVE ================= */
-
+/* ================= RESPONSIVE HOME ================= */
 @media (max-width: 1024px) {
-    .category-grid-home {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .product-grid {
-        grid-template-columns: repeat(3, 1fr);
+    .section-categories .category-grid-home {
+        grid-template-columns: repeat(4, 1fr);
     }
 }
-
 @media (max-width: 768px) {
-    .category-grid-home {
-        grid-template-columns: repeat(2, 1fr);
+    .hero { height: 320px; }
+    .hero-title { font-size: 24px; }
+    .section-categories .category-grid-home {
+        grid-template-columns: repeat(3, 1fr);
     }
-
-    .product-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .hero {
-        height: 320px;
-    }
-
-    .hero-text {
-        padding-top: 60px;
-    }
-
-    .hero-title {
-        font-size: 24px;
-    }
+    .section-bestseller .container { padding: 24px; }
 }
-
 @media (max-width: 480px) {
-    .product-grid {
-        grid-template-columns: 1fr 1fr;
+    .section-categories .category-grid-home {
+        grid-template-columns: repeat(2, 1fr);
     }
 }

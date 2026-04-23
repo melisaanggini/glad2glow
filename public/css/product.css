@@ -1,197 +1,382 @@
 /* ============================================
-   PRODUCT.CSS — Khusus Halaman Detail Produk
-   Sections: Breadcrumb bar, Gallery,
-             Product Info, Tabs, Related Products
+   PRODUCT.CSS — Halaman Detail Produk
+   Sesuai desain Figma Glad2Glow
    ============================================ */
 
-/* ---- PAGE LAYOUT ---- */
+/* ===== BREADCRUMB BAR ===== */
 .breadcrumb-bar {
-    background: var(--gray-100);
-    padding: 12px 0;
+    padding: 14px 0;
     border-bottom: 1px solid var(--border);
 }
-.product-detail-page { padding: 40px 0 60px; }
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--gray-600);
+}
+.breadcrumb a {
+    color: var(--gray-600);
+    transition: var(--transition);
+}
+.breadcrumb a:hover { color: var(--pink); }
+.breadcrumb span { color: var(--gray-400); }
 
-/* ---- PRODUCT GRID LAYOUT ---- */
-/* C4: Grid layout seimbang — kiri gambar, kanan info */
-/* E1: Informasi utama di area above the fold */
+
+/* ===== PRODUCT DETAIL LAYOUT ===== */
+/* C4: Kiri = gambar, Kanan = info */
+.product-detail-page { padding: 32px 0 60px; }
+
 .product-detail-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 48px;
+    gap: 50px;
     align-items: start;
+    margin-bottom: 48px;
 }
 
-/* ---- IMAGE GALLERY ---- */
+
+/* ===== GALLERY ===== */
 .gallery-main {
-    aspect-ratio: 1/1;
+    border: 1px solid var(--border);
     border-radius: var(--radius);
     overflow: hidden;
-    background: var(--gray-100);
-    margin-bottom: 12px;
-}
-.gallery-main img { width: 100%; height: 100%; object-fit: cover; }
-.gallery-thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
-.gallery-thumb {
+    background: #f9f9f9;
     aspect-ratio: 1/1;
-    border-radius: var(--radius-sm);
-    overflow: hidden;
-    border: 2px solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+.gallery-main img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 20px;
+}
+
+/* Dot navigator (sesuai Figma) */
+.gallery-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 12px;
+}
+.gallery-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--gray-200);
     cursor: pointer;
-    background: var(--gray-100);
     transition: var(--transition);
 }
-.gallery-thumb.active,
-.gallery-thumb:hover { border-color: var(--pink); }
-.gallery-thumb img { width: 100%; height: 100%; object-fit: cover; }
-
-/* ---- PRODUCT INFO ---- */
-/* C2: Struktur hierarki — nama → meta → harga → deskripsi → aksi */
-.product-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
-.product-badge-cat {
-    background: var(--pink-light);
-    color: var(--pink);
-    font-size: 11px;
-    font-weight: 600;
-    padding: 3px 10px;
-    border-radius: 20px;
+.gallery-dot.active,
+.gallery-dot:hover {
+    background: var(--pink);
 }
-.product-info h1 { font-size: 26px; margin-bottom: 6px; }
-.product-info-sub { color: var(--gray-600); font-size: 14px; margin-top: 4px; }
 
-.product-rating-detail { display: flex; align-items: center; gap: 6px; margin: 10px 0; }
 
-/* QC1: Harga lengkap dengan diskon */
-.product-price-detail { margin-bottom: 20px; }
-.price-main { font-size: 28px; font-weight: 700; color: var(--pink); }
-.price-original { font-size: 15px; color: var(--gray-400); text-decoration: line-through; margin-left: 8px; }
-.price-discount {
-    display: inline-block;
-    background: #FFF3F3;
-    color: var(--pink);
-    font-size: 11px;
+/* ===== PRODUCT INFO ===== */
+/* E1: Hierarki info — nama → harga+rating → deskripsi → opsi → aksi */
+.product-detail-title {
+    font-size: 22px;
     font-weight: 700;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-left: 8px;
+    color: var(--text);
+    margin-bottom: 14px;
+    line-height: 1.3;
 }
 
-.product-desc { font-size: 14px; color: var(--gray-600); line-height: 1.8; margin-bottom: 20px; }
+/* Harga + Rating sejajar (sesuai Figma) */
+.product-price-rating-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+.detail-price {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--pink);
+}
+.detail-rating {
+    font-size: 14px;
+    color: var(--gray-600);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
 
-/* ---- VARIANT PICKER ---- */
-.product-variant-section { margin-bottom: 16px; }
-.product-variant-section label { font-size: 13px; font-weight: 600; display: block; margin-bottom: 8px; }
-.variant-options { display: flex; gap: 8px; flex-wrap: wrap; }
-.variant-btn {
-    padding: 6px 14px;
+/* Deskripsi singkat */
+.detail-desc {
+    font-size: 14px;
+    color: var(--gray-600);
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+/* Option rows (Size, Quantity) */
+.detail-option-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+.detail-option-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    min-width: 70px;
+}
+
+/* Size buttons */
+.size-options { display: flex; gap: 8px; }
+.size-btn {
+    padding: 6px 16px;
     border: 1.5px solid var(--border);
-    border-radius: var(--radius-sm);
+    border-radius: 6px;
     font-size: 13px;
     cursor: pointer;
-    transition: var(--transition);
     background: #fff;
     font-family: 'Poppins', sans-serif;
+    transition: var(--transition);
 }
-.variant-btn.active,
-.variant-btn:hover { border-color: var(--pink); color: var(--pink); background: var(--pink-light); }
+.size-btn:hover,
+.size-btn.active {
+    border-color: var(--pink);
+    background: var(--pink-light);
+    color: var(--pink);
+}
 
-/* ---- QUANTITY ---- */
-.qty-row { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
-.qty-label { font-size: 13px; font-weight: 600; }
+/* Quantity */
 .qty-control {
     display: flex;
     align-items: center;
     border: 1.5px solid var(--border);
-    border-radius: var(--radius-sm);
+    border-radius: 6px;
     overflow: hidden;
 }
 .qty-btn {
     width: 36px; height: 36px;
     border: none; background: #fff;
-    cursor: pointer; font-size: 16px; font-weight: 600;
+    cursor: pointer; font-size: 18px; font-weight: 500;
     transition: var(--transition);
+    font-family: 'Poppins', sans-serif;
 }
 .qty-btn:hover { background: var(--gray-100); }
 .qty-num {
-    width: 44px; height: 36px;
+    width: 48px; height: 36px;
     text-align: center; border: none;
     border-left: 1px solid var(--border);
     border-right: 1px solid var(--border);
-    font-family: 'Poppins', sans-serif; font-size: 14px;
-}
-
-/* ---- CTA BUTTONS (E2: Aksi langsung tersedia) ---- */
-.action-row { display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
-.action-row .btn-primary { flex: 1; text-align: center; padding: 14px; font-size: 15px; }
-.btn-cart {
-    display: flex; align-items: center; justify-content: center; gap: 8px;
-    padding: 14px 20px;
-    border: 1.5px solid var(--pink);
-    border-radius: var(--radius-sm);
-    color: var(--pink); font-size: 14px; font-weight: 500;
-    cursor: pointer; background: #fff;
-    transition: var(--transition);
     font-family: 'Poppins', sans-serif;
+    font-size: 14px;
 }
-.btn-cart:hover { background: var(--pink); color: #fff; }
 
-/* ---- TRUST SIGNALS ---- */
-.product-trust {
-    display: flex; gap: 20px;
-    padding: 16px 0;
-    border-top: 1px solid var(--border);
+/* CTA Buttons (E2: Aksi langsung tersedia) */
+.detail-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+.btn-shop-now-detail {
+    display: inline-block;
+    background: var(--pink);
+    color: #fff;
+    padding: 12px 28px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: var(--transition);
+}
+.btn-shop-now-detail:hover { background: var(--pink-hover); }
+
+.btn-cart-detail {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    background: var(--pink);
+    border-radius: 6px;
+    transition: var(--transition);
+}
+.btn-cart-detail:hover { background: var(--pink-hover); }
+.btn-cart-detail img {
+    width: 22px; height: 22px;
+    filter: invert(1);
+    object-fit: contain;
+}
+
+
+/* ===== TABS (C2: Pengelompokan info per section) ===== */
+.product-tabs-section { margin-bottom: 40px; }
+
+.tabs-header {
+    display: flex;
     border-bottom: 1px solid var(--border);
-    margin-bottom: 20px;
+    margin-bottom: 24px;
     flex-wrap: wrap;
 }
-.trust-item-detail { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--gray-600); }
-
-/* ---- PRODUCT TABS (C2: Pengelompokan per section) ---- */
-.product-tabs-section { margin-top: 48px; }
-.tabs-header { display: flex; border-bottom: 2px solid var(--border); margin-bottom: 24px; flex-wrap: wrap; }
 .tab-btn {
-    padding: 12px 24px;
-    border: none; background: transparent;
-    font-size: 14px; font-weight: 500; color: var(--gray-600);
+    padding: 12px 20px;
+    border: 1px solid var(--border);
+    background: #fff;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--gray-600);
     cursor: pointer;
-    border-bottom: 2px solid transparent;
-    margin-bottom: -2px;
     transition: var(--transition);
     font-family: 'Poppins', sans-serif;
+    border-radius: 6px;
+    margin-right: 8px;
+    margin-bottom: 8px;
 }
-.tab-btn.active { color: var(--pink); border-bottom-color: var(--pink); }
+.tab-btn.active {
+    border-color: var(--pink);
+    color: var(--pink);
+    font-weight: 500;
+    background: var(--pink-light);
+}
 .tab-content { display: none; }
 .tab-content.active { display: block; }
-.tab-content p { font-size: 14px; color: var(--gray-600); line-height: 1.8; }
-
-/* Benefits list */
+.tab-content p {
+    font-size: 14px;
+    color: var(--gray-600);
+    line-height: 1.9;
+    margin-bottom: 12px;
+}
+.tab-spec { margin-top: 16px; }
+.tab-list {
+    padding-left: 20px;
+    margin-top: 8px;
+}
+.tab-list li {
+    font-size: 14px;
+    color: var(--gray-600);
+    line-height: 1.8;
+    list-style: disc;
+    margin-bottom: 6px;
+}
 .benefits-list { list-style: none; }
 .benefits-list li {
-    display: flex; align-items: flex-start; gap: 10px;
-    font-size: 14px; color: var(--gray-600);
-    margin-bottom: 10px; padding-bottom: 10px;
+    display: flex;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--gray-600);
+    padding: 10px 0;
     border-bottom: 1px solid var(--border);
+    line-height: 1.6;
 }
 .benefits-list li:last-child { border-bottom: none; }
-.benefits-list li::before { content: "✓"; color: var(--pink); font-weight: 700; flex-shrink: 0; }
-
-/* Rating display in reviews tab */
-.rating-display {
-    text-align: center;
-    padding: 40px 20px;
-    color: var(--gray-400);
+.benefits-list li::before {
+    content: "✓";
+    color: var(--pink);
+    font-weight: 700;
+    flex-shrink: 0;
 }
-.rating-display .rating-emoji { font-size: 48px; margin-bottom: 8px; }
-.rating-display .rating-score { font-size: 36px; font-weight: 700; color: var(--text); }
 
-/* ---- RELATED PRODUCTS ---- */
-.related-section { padding: 50px 0; background: var(--gray-100); }
 
-/* ---- RESPONSIVE PRODUCT ---- */
+/* ===== REVIEWS (sesuai Figma) ===== */
+.reviews-section { margin-top: 8px; }
+
+.reviews-header {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+.btn-write-review {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1.5px solid var(--border);
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    transition: var(--transition);
+}
+.btn-write-review:hover { border-color: var(--pink); color: var(--pink); }
+
+/* 3 kolom review card (sesuai Figma) */
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 24px;
+}
+.review-card {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+}
+.review-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.review-user {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.review-avatar {
+    width: 36px; height: 36px;
+    background: var(--gray-100);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+.review-name { font-size: 14px; font-weight: 600; }
+.review-stars { color: #F5A623; font-size: 14px; letter-spacing: 1px; }
+.review-text {
+    font-size: 13px;
+    color: var(--gray-600);
+    line-height: 1.7;
+    margin-bottom: 10px;
+}
+.review-img-placeholder {
+    width: 50px; height: 50px;
+    background: var(--gray-100);
+    border-radius: 6px;
+}
+
+/* Pagination */
+.reviews-pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+}
+.page-btn {
+    width: 36px; height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    font-size: 14px;
+    color: var(--text);
+    transition: var(--transition);
+}
+.page-btn:hover,
+.page-btn.active {
+    border-color: var(--pink);
+    color: var(--pink);
+    font-weight: 600;
+}
+
+/* Related Products */
+.related-section { padding: 40px 0; background: var(--gray-100); }
+
+
+/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-    .product-detail-grid { grid-template-columns: 1fr; }
-    .action-row { flex-direction: column; }
-    .product-trust { gap: 12px; }
-    .tabs-header { overflow-x: auto; }
-    .tab-btn { padding: 10px 16px; font-size: 13px; }
+    .product-detail-grid { grid-template-columns: 1fr; gap: 24px; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .detail-actions { flex-direction: column; }
+    .tabs-header { flex-wrap: wrap; }
 }

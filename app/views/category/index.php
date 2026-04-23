@@ -1,88 +1,92 @@
-<?php require ROOT . '/app/views/layouts/header.php'; ?>
-
 <?php
-$categoryIcons = [
-    'Best Seller' => 'best-seller.png',
-    'Make Up' => 'makeup.png',
-    'Cleanser' => 'micellar.png',
-    'Serum' => 'serum.png',
-    'Toner' => 'toner.png',
-    'Moisturizer' => 'moisturizer.png',
-    'Body Lotion' => 'lotion.png',
-    'Combo Sets' => 'combo.png',
-];
-
-$selectedCatId = isset($_GET['cat']) ? (int)$_GET['cat'] : null;
+$pageTitle = 'Shop — Glad2Glow';
+$pageCSS   = 'category.css';
+require ROOT . '/app/views/layouts/header.php';
 ?>
 
-<!-- ===========================
-     HERO STRIP
-     =========================== -->
+<?php
+// Mapping nama kategori → file gambar
+$catImages = [
+    'Make Up'     => 'makeup.png',
+    'Cleanser'    => 'micellar.png',
+    'Serum'       => 'serum.png',
+    'Toner'       => 'toner.png',
+    'Moisturizer' => 'moisturizer.png',
+    'Body Lotion' => 'lotion.png',
+    'Combo Sets'  => 'combo.png',
+];
+
+$activeFilter = $data['active_filter'] ?? null;
+?>
+
+<!-- HERO STRIP (sesuai Figma) -->
 <section class="category-hero">
     <div class="container">
         <h2>Find the Best Skincare Routine for Your Skin</h2>
     </div>
 </section>
 
-
-<!-- ===========================
-     CATEGORY + PRODUCT
-     =========================== -->
+<!-- CATEGORY + PRODUCT -->
 <section class="category-page">
     <div class="container">
 
-        <!-- ================= CATEGORY HORIZONTAL ================= -->
+        <!-- ===== CATEGORY FILTER HORIZONTAL ===== -->
+        <!-- E3: Recognition > Recall — ikon langsung terlihat -->
         <div class="category-horizontal">
 
-            
+            <!-- Best Seller (tambahan sesuai Figma) -->
+            <a href="<?= BASEURL ?>/category?cat=bestseller"
+               class="category-item <?= ($activeFilter === 'bestseller') ? 'active' : '' ?>">
+                <img src="<?= BASEURL ?>/assets/images/icon_bestseller.png" alt="Best Seller">
+                <p>Best Seller</p>
+            </a>
+
+            <!-- Kategori dari database -->
             <?php foreach ($data['categories'] as $cat): ?>
             <a href="<?= BASEURL ?>/category?cat=<?= $cat['id'] ?>"
-               class="category-item <?= ($selectedCatId == $cat['id']) ? 'active' : '' ?>">
-
-                <img src="<?= BASEURL ?>/assets/images/<?= $categoryIcons[$cat['name']] ?? 'default.png' ?>">
+               class="category-item <?= ($activeFilter == $cat['id']) ? 'active' : '' ?>">
+                <img src="<?= BASEURL ?>/assets/images/<?= $catImages[$cat['name']] ?? 'placeholder.jpg' ?>"
+                     alt="<?= htmlspecialchars($cat['name']) ?>">
                 <p><?= htmlspecialchars($cat['name']) ?></p>
-
             </a>
             <?php endforeach; ?>
 
         </div>
 
 
-        <!-- ================= PRODUCT GRID ================= -->
+        <!-- ===== PRODUCT GRID ===== -->
+        <!-- C4: Grid seimbang, QC1: Info produk lengkap -->
         <?php if (!empty($data['products'])): ?>
 
-        <div class="product-grid">
+        <div class="category-product-grid">
 
             <?php foreach ($data['products'] as $product): ?>
-            <div class="product-card">
+            <div class="cat-product-card" onclick="window.location='<?= BASEURL ?>/product?id=<?= $product['id'] ?>'">
 
-                <img src="<?= BASEURL ?>/assets/images/products/<?= htmlspecialchars($product['image']) ?>">
-
-                <h4><?= htmlspecialchars($product['name']) ?></h4>
-
-                <div class="price">
-                    <span class="new">
-                        Rp <?= number_format($product['price'], 0, ',', '.') ?>
-                    </span>
-
-                    <?php if (!empty($product['old_price'])): ?>
-                        <span class="old">
-                            Rp <?= number_format($product['old_price'], 0, ',', '.') ?>
-                        </span>
-                    <?php endif; ?>
+                <div class="cat-product-img">
+                    <img src="<?= BASEURL ?>/assets/images/products/<?= htmlspecialchars($product['image']) ?>"
+                         alt="<?= htmlspecialchars($product['name']) ?>"
+                         onerror="this.src='<?= BASEURL ?>/assets/images/placeholder.jpg'">
                 </div>
 
-                <div class="rating">
-                    ⭐ <?= number_format($product['rating'] ?? 4.5, 1) ?>
-                    <span><?= $product['review_count'] ?? 0 ?> review</span>
+                <div class="cat-product-body">
+                    <h4><?= htmlspecialchars($product['name']) ?></h4>
+
+                    <div class="cat-price-row">
+                        <span class="price-new-cat">$<?= number_format($product['price'], 0) ?></span>
+                        <?php if (!empty($product['old_price'])): ?>
+                        <span class="price-old-cat">$<?= number_format($product['old_price'], 0) ?></span>
+                        <?php endif; ?>
+                        <span class="stars-cat">★ <?= number_format($product['rating'], 1) ?></span>
+                        <span class="review-cat"><?= $product['review_count'] ?> review</span>
+                    </div>
                 </div>
 
-                <div class="btn-row">
-                    <a href="<?= BASEURL ?>/product?id=<?= $product['id'] ?>" class="btn-shop">
-                        Shop Now
-                    </a>
-
-                    <button class="btn-cart">🛒</button>
+                <div class="cat-product-footer">
+                    <a href="<?= BASEURL ?>/product?id=<?= $product['id'] ?>" class="btn-shop-cat">Shop Now</a>
+                    <button class="btn-cart-cat">
+                        <img src="<?= BASEURL ?>/assets/icons/icon_cart.png" alt="cart">
+                    </button>
                 </div>
 
             </div>
@@ -91,11 +95,10 @@ $selectedCatId = isset($_GET['cat']) ? (int)$_GET['cat'] : null;
         </div>
 
         <?php else: ?>
-
-            <div class="empty-state">
-                <p>Produk belum tersedia</p>
+            <!-- Belum pilih kategori — tampilkan semua kategori -->
+            <div class="cat-empty-hint">
+                <p>Pilih kategori di atas untuk melihat produk 👆</p>
             </div>
-
         <?php endif; ?>
 
     </div>

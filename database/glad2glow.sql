@@ -1,6 +1,7 @@
 -- =============================================
 -- DATABASE: glad2glow
--- Prototype for skripsi UEQ+ & Kano Model
+-- Prototype Skripsi UEQ+ & Kano Model
+-- Kategori disesuaikan dengan desain Figma
 -- =============================================
 
 CREATE DATABASE IF NOT EXISTS glad2glow CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -9,18 +10,21 @@ USE glad2glow;
 -- =============================================
 -- TABLE: categories
 -- =============================================
-CREATE TABLE IF NOT EXISTS categories (
+DROP TABLE IF EXISTS products;
+DROP TABLE IF EXISTS categories;
+
+CREATE TABLE categories (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     slug VARCHAR(100) NOT NULL,
-    image VARCHAR(255) DEFAULT 'default-category.jpg',
+    image VARCHAR(255) DEFAULT 'placeholder.jpg',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 -- =============================================
 -- TABLE: products
 -- =============================================
-CREATE TABLE IF NOT EXISTS products (
+CREATE TABLE products (
     id INT AUTO_INCREMENT PRIMARY KEY,
     category_id INT,
     name VARCHAR(200) NOT NULL,
@@ -35,7 +39,7 @@ CREATE TABLE IF NOT EXISTS products (
     benefits TEXT,
     how_to_use TEXT,
     ingredients TEXT,
-    image VARCHAR(255) DEFAULT 'default-product.jpg',
+    image VARCHAR(255) DEFAULT 'placeholder.jpg',
     is_bestseller TINYINT(1) DEFAULT 0,
     is_new TINYINT(1) DEFAULT 1,
     stock INT DEFAULT 100,
@@ -44,53 +48,84 @@ CREATE TABLE IF NOT EXISTS products (
 );
 
 -- =============================================
--- SEED DATA: Categories
+-- SEED: Categories (sesuai Figma)
 -- =============================================
 INSERT INTO categories (name, slug, image) VALUES
-('Skincare', 'skincare', 'cat-skincare.jpg'),
-('Body Care', 'body-care', 'cat-bodycare.jpg'),
-('Hair Care', 'hair-care', 'cat-haircare.jpg'),
-('Lip Care', 'lip-care', 'cat-lipcare.jpg'),
-('Sun Care', 'sun-care', 'cat-suncare.jpg'),
-('Eye Care', 'eye-care', 'cat-eyecare.jpg');
+('Make Up',    'make-up',    'makeup.png'),
+('Cleanser',   'cleanser',   'micellar.png'),
+('Serum',      'serum',      'serum.png'),
+('Toner',      'toner',      'toner.png'),
+('Moisturizer','moisturizer','moisturizer.png'),
+('Body Lotion','body-lotion','lotion.png'),
+('Combo Sets', 'combo-sets', 'combo.png');
 
 -- =============================================
--- SEED DATA: Products
+-- SEED: Products (sesuai Figma - nama produk real)
 -- =============================================
 INSERT INTO products (category_id, name, slug, variant, size, price, old_price, rating, review_count, description, benefits, how_to_use, ingredients, image, is_bestseller, is_new) VALUES
-(1, 'Glow Booster Serum', 'glow-booster-serum', 'Brightening', '30ml', 120000, 150000, 4.8, 234, 
- 'Serum pencerah kulit dengan kandungan Vitamin C 15% dan Niacinamide yang bekerja sinergis untuk mencerahkan, meratakan warna kulit, dan melindungi dari radikal bebas.',
- 'Mencerahkan kulit kusam|Meratakan warna kulit|Menyamarkan noda hitam|Melindungi dari radikal bebas',
- 'Gunakan 2-3 tetes serum pada wajah bersih, pagi dan malam. Tepuk lembut hingga meresap sempurna sebelum menggunakan pelembab.',
- 'Aqua, Ascorbic Acid 15%, Niacinamide 5%, Hyaluronic Acid, Glycerin, Tocopherol',
- 'product-serum.jpg', 1, 1),
-(1, 'Hydra Glow Moisturizer', 'hydra-glow-moisturizer', 'All Skin Type', '50ml', 95000, 120000, 4.6, 189,
- 'Pelembab ringan dengan kandungan Hyaluronic Acid dan Ceramide yang memberikan hidrasi 24 jam untuk kulit lembab dan bercahaya sepanjang hari.',
- 'Melembabkan kulit 24 jam|Memperkuat skin barrier|Tekstur ringan non-greasy|Cocok untuk semua jenis kulit',
- 'Oleskan secukupnya pada wajah dan leher setelah toner, pagi dan malam hari.',
- 'Aqua, Hyaluronic Acid, Ceramide NP, Glycerin, Niacinamide 3%, Panthenol',
- 'product-moisturizer.jpg', 1, 0),
-(1, 'Pore Clarifying Toner', 'pore-clarifying-toner', 'Oily Skin', '150ml', 75000, 95000, 4.5, 312,
- 'Toner penyeimbang dengan kandungan BHA 2% dan Zinc PCA yang membantu mengecilkan pori-pori, mengontrol minyak berlebih, dan mencegah jerawat.',
- 'Mengecilkan pori-pori|Mengontrol minyak berlebih|Mencegah jerawat|Menyegarkan kulit',
- 'Tuangkan toner pada kapas atau telapak tangan, tepuk lembut pada wajah setelah membersihkan wajah.',
- 'Aqua, Salicylic Acid 2%, Zinc PCA, Niacinamide 5%, Witch Hazel Extract, Aloe Vera',
+
+-- SERUM (cat id 3) - Bestsellers
+(3, 'Brightening Lip Serum', 'brightening-lip-serum', 'Brightening', '15ml',
+ 20, 25, 4.5, 0,
+ 'Serum bibir pencerah dengan kandungan Vitamin C dan Niacinamide yang membantu mencerahkan warna bibir gelap secara bertahap dan memberikan kelembaban intensif.',
+ 'Mencerahkan bibir gelap|Melembabkan bibir kering|Memberikan efek glossy alami|Menyamarkan garis bibir',
+ 'Oleskan tipis pada bibir pagi dan malam setelah membersihkan wajah. Bisa dipakai sebagai base sebelum lipstik.',
+ 'Aqua, Ascorbic Acid, Niacinamide, Hyaluronic Acid, Glycerin, Tocopherol, Rosa Canina Fruit Extract',
+ 'product-serum.jpg', 1, 0),
+
+(2, 'Milk Amino Acid Gentle Cleanser 80g', 'milk-amino-acid-cleanser', 'All Skin Type', '80g',
+ 20, 25, 4.5, 0,
+ 'Pembersih wajah lembut dengan kandungan Amino Acid susu yang membersihkan pori tanpa menghilangkan kelembaban alami kulit. Cocok untuk semua jenis kulit termasuk sensitif.',
+ 'Membersihkan kotoran dan makeup|Menjaga kelembaban kulit|Tidak menyebabkan iritasi|Cocok untuk kulit sensitif',
+ 'Basahi wajah, ambil secukupnya lalu buat busa di tangan. Pijat lembut ke wajah dengan gerakan memutar, bilas dengan air bersih.',
+ 'Aqua, Sodium Cocoyl Glutamate, Milk Amino Acid, Glycerin, Panthenol, Allantoin, Centella Asiatica Extract',
  'product-toner.jpg', 1, 0),
-(2, 'Glow Body Lotion', 'glow-body-lotion', 'Brightening', '200ml', 80000, 100000, 4.7, 156,
- 'Body lotion pencerah dengan kandungan Alpha Arbutin dan Vitamin C yang membantu mencerahkan kulit tubuh secara merata dan memberikan kelembaban tahan lama.',
- 'Mencerahkan kulit tubuh|Melembabkan 12 jam|Aroma segar dan tahan lama|Menyamarkan bekas luka',
- 'Oleskan secukupnya pada seluruh tubuh setelah mandi. Pijat hingga meresap sempurna.',
- 'Aqua, Alpha Arbutin 2%, Ascorbic Acid, Glycerin, Shea Butter, Sweet Almond Oil',
- 'product-lotion.jpg', 1, 0),
-(1, 'Calming Face Mask', 'calming-face-mask', 'Sensitive Skin', '75ml', 65000, 80000, 4.4, 98,
- 'Masker wajah menenangkan dengan kandungan Centella Asiatica dan Aloe Vera yang cocok untuk kulit sensitif dan mudah iritasi.',
- 'Menenangkan kulit iritasi|Meredakan kemerahan|Melembabkan intensif|Aman untuk kulit sensitif',
- 'Oleskan masker pada wajah bersih, diamkan 15-20 menit, lalu bilas dengan air bersih. Gunakan 2-3x seminggu.',
- 'Centella Asiatica Extract, Aloe Vera, Panthenol, Allantoin, Glycerin, Chamomile Extract',
- 'product-mask.jpg', 0, 1),
-(5, 'UV Shield Sunscreen SPF50', 'uv-shield-sunscreen', 'PA++++', '50ml', 110000, 135000, 4.9, 445,
- 'Sunscreen broad spectrum SPF 50 PA++++ dengan tekstur ringan, tidak meninggalkan white cast, dan tidak lengket di kulit tropis.',
- 'Perlindungan UVA & UVB|Tidak meninggalkan white cast|Tekstur ringan & cepat meresap|Melembabkan sekaligus melindungi',
- 'Oleskan secukupnya pada wajah 15 menit sebelum beraktivitas di luar ruangan. Reapply setiap 2-3 jam.',
- 'Zinc Oxide, Titanium Dioxide, Niacinamide 5%, Hyaluronic Acid, Vitamin E, Aloe Vera',
- 'product-sunscreen.jpg', 1, 1);
+
+(3, 'Blueberry Gel Cleanser', 'blueberry-gel-cleanser', 'Normal to Oily', '100ml',
+ 20, 25, 4.5, 0,
+ 'Gel cleanser dengan ekstrak blueberry kaya antioksidan yang membantu membersihkan pori secara mendalam sambil melindungi kulit dari radikal bebas.',
+ 'Membersihkan pori secara mendalam|Kaya antioksidan blueberry|Mencegah penuaan dini|Kulit terasa segar',
+ 'Gunakan pagi dan malam. Basahi wajah, oleskan gel, pijat lembut, bilas bersih.',
+ 'Aqua, Vaccinium Myrtillus Extract, Salicylic Acid 0.5%, Glycerin, Niacinamide, Panthenol',
+ 'product-mask.jpg', 1, 0),
+
+(3, 'AHA BHA PHA Intensive Peeling Solution', 'aha-bha-pha-peeling', 'Exfoliating', '30ml',
+ 20, 25, 4.5, 0,
+ 'Peeling solution intensif dengan kombinasi AHA, BHA, dan PHA yang bekerja sinergis mengangkat sel kulit mati, mengecilkan pori, dan meratakan tekstur kulit.',
+ 'Mengangkat sel kulit mati|Mengecilkan pori-pori|Meratakan tekstur kulit|Mencerahkan kulit kusam',
+ 'Gunakan 1-2x seminggu. Oleskan pada wajah kering, diamkan 10-15 menit, bilas bersih. Gunakan SPF saat pagi hari.',
+ 'Aqua, Glycolic Acid 10%, Salicylic Acid 2%, Polyhydroxy Acid, Niacinamide 5%, Aloe Vera',
+ 'product-moisturizer.jpg', 1, 0),
+
+-- NEW PRODUCTS
+(6, 'Niacinamide Bright Body Serum', 'niacinamide-bright-body-serum', 'Brightening', '200ml',
+ 40, NULL, 4.7, 12,
+ 'Body serum pencerah dengan Niacinamide 5% dan Alpha Arbutin yang membantu meratakan warna kulit tubuh, menyamarkan bekas luka, dan memberikan efek glowing merata.',
+ 'Mencerahkan kulit tubuh|Menyamarkan bekas luka|Meratakan warna kulit|Memberikan efek glowing',
+ 'Oleskan pada kulit tubuh yang bersih setelah mandi. Pijat hingga meresap. Gunakan pagi dan malam.',
+ 'Aqua, Niacinamide 5%, Alpha Arbutin 2%, Glycerin, Hyaluronic Acid, Vitamin C, Shea Butter',
+ 'product-lotion.jpg', 0, 1),
+
+(2, 'Sensitive Clear Micellar Water', 'sensitive-clear-micellar-water', 'Sensitive Skin', '200ml',
+ 40, NULL, 4.6, 8,
+ 'Micellar water untuk kulit sensitif yang membersihkan makeup, kotoran, dan sebum tanpa perlu dibilas. Formula lembut bebas alkohol dan parfum.',
+ 'Membersihkan makeup tanpa bilas|Aman untuk kulit sensitif|Bebas alkohol dan parfum|Menjaga kelembaban',
+ 'Tuangkan pada kapas, usapkan lembut ke seluruh wajah hingga kapas bersih. Tidak perlu dibilas.',
+ 'Aqua, Micelles, Glycerin, Panthenol, Allantoin, Chamomile Extract, Aloe Vera',
+ 'product-serum.jpg', 0, 1),
+
+(5, 'Flawless Bluring Skin Tint', 'flawless-bluring-skin-tint', 'Natural Beige', '30ml',
+ 40, NULL, 4.8, 24,
+ 'Skin tint ringan dengan finish blur yang menyamarkan ketidaksempurnaan kulit secara natural. Memberikan coverage ringan dengan hasil akhir kulit sehat bercahaya.',
+ 'Coverage ringan dan natural|Finish blur menyamarkan pori|SPF 30 PA++|Kulit terlihat sehat glowing',
+ 'Oleskan dengan jari atau beauty sponge pada wajah. Blend rata ke leher untuk hasil natural.',
+ 'Aqua, Cyclopentasiloxane, Titanium Dioxide, Niacinamide 3%, Hyaluronic Acid, SPF 30',
+ 'product-moisturizer.jpg', 0, 1),
+
+(5, 'Perfect Cover BB Cream', 'perfect-cover-bb-cream', 'Light Beige', '40ml',
+ 40, NULL, 4.5, 6,
+ 'BB Cream multifungsi yang memberikan coverage medium, SPF 50, dan perawatan kulit dalam satu langkah. Cocok untuk tampilan natural sehari-hari.',
+ 'Coverage medium|SPF 50 PA+++|Menutrisi dan melembabkan|Tahan lama 12 jam',
+ 'Oleskan pada wajah menggunakan jari atau kuas. Blend rata, bisa dipadukan dengan bedak untuk hasil lebih tahan lama.',
+ 'Aqua, Titanium Dioxide, Zinc Oxide, Niacinamide 5%, Hyaluronic Acid, Collagen, SPF 50',
+ 'product-mask.jpg', 0, 1);

@@ -9,13 +9,23 @@ class CategoryController {
 
         $data['categories'] = $categoryModel->getAll();
 
-        // If a category filter is selected
+        // Filter yang dipilih (cat=ID atau cat=bestseller)
         $data['selected_category'] = null;
-        $data['products'] = [];
+        $data['products']          = [];
+        $data['active_filter']     = null; // untuk highlight tab aktif
+
         if (isset($_GET['cat'])) {
-            $catId = (int) $_GET['cat'];
-            $data['selected_category'] = $categoryModel->getById($catId);
-            $data['products'] = $productModel->getByCategory($catId);
+            if ($_GET['cat'] === 'bestseller') {
+                // Filter Best Seller
+                $data['active_filter']     = 'bestseller';
+                $data['products']          = $productModel->getBestsellers(12);
+                $data['selected_category'] = ['name' => 'Best Seller', 'id' => 'bestseller'];
+            } else {
+                $catId = (int) $_GET['cat'];
+                $data['active_filter']     = $catId;
+                $data['selected_category'] = $categoryModel->getById($catId);
+                $data['products']          = $productModel->getByCategory($catId);
+            }
         }
 
         require ROOT . '/app/views/category/index.php';
