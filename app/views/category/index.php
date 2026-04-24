@@ -96,7 +96,7 @@ $activeFilter = $data['active_filter'] ?? null;
         <?php else: ?>
             <!-- Belum pilih kategori — tampilkan semua kategori -->
             <div class="cat-empty-hint">
-                <p>Pilih kategori di atas untuk melihat produk 👆</p>
+                <p>Select Category First!</p>
             </div>
         <?php endif; ?>
 
