@@ -31,7 +31,6 @@ $activeFilter = $data['active_filter'] ?? null;
     <div class="container">
 
         <!-- ===== CATEGORY FILTER HORIZONTAL ===== -->
-        <!-- E3: Recognition > Recall — ikon langsung terlihat -->
         <div class="category-horizontal">
 
             <!-- Best Seller (tambahan sesuai Figma) -->

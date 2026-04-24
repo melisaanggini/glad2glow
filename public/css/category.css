@@ -44,34 +44,47 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 6px;
+    justify-content: center;
 
-    padding: 10px 12px;
-    border-radius: 12px;
+    width: 110px;        /* FIXED WIDTH (INI KUNCINYA) */
+    height: 120px;       /* FIXED HEIGHT */
 
-    cursor: pointer;
+    flex: 0 0 110px;     /* PENTING: jangan fleksibel */
+    
+    padding: 10px;
+    border-radius: 14px;
+
+    text-align: center;
     text-decoration: none;
+    cursor: pointer;
 
-    min-width: 70px;
+    gap: 8px;
 
-    transition: all 0.3s cubic-bezier(.4,0,.2,1);
+    box-sizing: border-box;
+    transition: all 0.25s ease;
 }
 
 /* ICON */
 .category-item img {
-    width: 40px;
-    height: 40px;
+    width: 42px;
+    height: 42px;
     object-fit: contain;
+    display: block;
 }
 
 /* TEXT */
 .category-item p {
     font-size: 13px;
     font-weight: 500;
-    color: #333;
     margin: 0;
-}
 
+    width: 100%;
+    text-align: center;
+
+    white-space: nowrap;      /* STOP WRAP */
+    overflow: hidden;
+    text-overflow: ellipsis;  /* kalau kepanjangan jadi ... */
+}
 /* HOVER */
 .category-item:hover {
     background: #fdecef;
