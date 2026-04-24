@@ -283,9 +283,69 @@
 
 /* ================= NEW PRODUCT SECTION ================= */
 .section-new {
-    padding: 60px 0;
+    padding: 30px 0; /* ⬅️ atas bawah lebih lega */
     background: #fff;
 }
+
+/* ⬅️ INI PENTING BANGET (SAMAKAN DENGAN HERO & BEST SELLER) */
+.section-new .container {
+    max-width: 1200px; /* ⬅️ samakan lebar */
+    margin: 0 auto;
+    padding: 0 40px; /* ⬅️ sama kayak best seller */
+}
+
+/* JARAK KE FOOTER */
+.section-new {
+    margin-bottom: 30px; /* ⬅️ biar ga mepet footer */
+}
+
+
+.new-carousel {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.new-track {
+    display: flex;
+    gap: 20px;
+    overflow: hidden;
+    scroll-behavior: smooth;
+}
+
+/* card fix 5 tampil */
+.product-card-new {
+    min-width: calc(100% / 5 - 16px);
+    flex-shrink: 0;
+}
+
+/* tombol panah */
+.carousel-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: #E8275A;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+
+    position: absolute;
+    z-index: 5;
+}
+
+.carousel-btn.prev {
+    left: -20px;
+}
+
+.carousel-btn.next {
+    right: -20px;
+}
+
+.carousel-btn:hover {
+    background: #c91e49;
+}
+
 /* New product card lebih besar, background pink */
 .product-card-new {
     background: #fce4ec !important;
@@ -356,7 +416,7 @@
     background: var(--pink);
     color: #fff;
     padding: 8px 24px;
-    border-radius: 20px;
+    border-radius: 8px;
     font-size: 13px;
     font-weight: 500;
     transition: var(--transition);

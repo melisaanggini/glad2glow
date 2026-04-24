@@ -151,32 +151,59 @@ require ROOT . '/app/views/layouts/header.php';
 
         <h2 class="section-title">New Product</h2>
 
-        <div class="product-grid product-grid-new">
+        <div class="new-carousel">
+
+        <button class="carousel-btn prev">‹</button>
+
+        <div class="new-track">
             <?php if (!empty($data['new_products'])): ?>
                 <?php foreach ($data['new_products'] as $product): ?>
-                <div class="product-card product-card-new" onclick="window.location='<?= BASEURL ?>/product?id=<?= $product['id'] ?>'">
+                <div class="product-card product-card-new">
 
                     <div class="product-card-img">
                         <img src="<?= BASEURL ?>/assets/images/products/<?= htmlspecialchars($product['image']) ?>"
-                             alt="<?= htmlspecialchars($product['name']) ?>"
-                             onerror="this.src='<?= BASEURL ?>/assets/images/placeholder.jpg'">
+                            alt="<?= htmlspecialchars($product['name']) ?>"
+                            onerror="this.src='<?= BASEURL ?>/assets/images/placeholder.jpg'">
                     </div>
 
                     <div class="product-card-body center">
                         <h3 class="product-name"><?= htmlspecialchars($product['name']) ?></h3>
                         <p class="price-new">$<?= number_format($product['price'], 0) ?></p>
-                        <a href="<?= BASEURL ?>/product?id=<?= $product['id'] ?>" class="btn-view-more">View More</a>
+
+                        <!-- ⬇️ TAMBAH INI -->
+                        <a href="<?= BASEURL ?>/product?id=<?= $product['id'] ?>" class="btn-view-more">
+                            View More
+                        </a>
+
                     </div>
 
                 </div>
                 <?php endforeach; ?>
-            <?php else: ?>
-                <p style="color:#999; grid-column:1/-1; text-align:center; padding:40px 0;">Produk baru akan segera hadir</p>
             <?php endif; ?>
         </div>
+        <button class="carousel-btn next">›</button>
+    </div>
 
     </div>
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+    const track = document.querySelector('.new-track');
+    const nextBtn = document.querySelector('.carousel-btn.next');
+    const prevBtn = document.querySelector('.carousel-btn.prev');
+
+    nextBtn.addEventListener('click', () => {
+        track.scrollBy({ left: 250, behavior: 'smooth' });
+    });
+
+    prevBtn.addEventListener('click', () => {
+        track.scrollBy({ left: -250, behavior: 'smooth' });
+    });
+
+});
+</script>
 
 
 <?php require ROOT . '/app/views/layouts/footer.php'; ?>
