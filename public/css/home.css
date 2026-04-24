@@ -184,6 +184,103 @@
     padding: 40px;
 }
 
+/* WRAPPER GRID + BUTTON */
+.bestseller-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* BIAR GRID FLEXIBLE */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    flex: 1;
+}
+
+/* TOMBOL DI SAMPING */
+.btn-arrow-side {
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #E8275A;
+    color: #fff;
+
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+
+    flex-shrink: 0;
+    transition: 0.3s;
+}
+
+.btn-arrow-side:hover {
+    background: #c91e49;
+    transform: scale(1.1);
+}
+
+.product-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* kiri harga, kanan rating */
+    margin-top: 8px;
+}
+
+.product-name {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    text-align: center; /* ⬅️ INI YANG BARU */
+
+}
+
+.price-new {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--pink);
+}
+
+/* ⬇️ SAMAKAN DENGAN HARGA */
+.product-rating {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 14px; /* ⬅️ SAMA DENGAN HARGA */
+    color: #555;
+}
+
+.rating-count {
+    font-size: 14px; /* ⬅️ SAMA DENGAN HARGA */
+    color: #434343;
+}
+
+.btn-shop-now {
+    flex: 1;
+    display: block;
+    text-align: center;
+
+    background: #fa7a9c !important; /* ⬅️ PINK FIX */
+    color: #fff;
+
+    padding: 9px 14px;
+    border-radius: var(--radius-sm);
+
+    font-size: 13px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.btn-shop-now:hover {
+    background: #c91e49 !important;
+}
+
+
 /* ================= NEW PRODUCT SECTION ================= */
 .section-new {
     padding: 60px 0;

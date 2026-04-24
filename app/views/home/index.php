@@ -94,6 +94,8 @@ require ROOT . '/app/views/layouts/header.php';
             Best Seller
         </h2>
 
+        <div class="bestseller-wrapper">
+
         <div class="product-grid">
             <?php if (!empty($data['bestsellers'])): ?>
                 <?php foreach ($data['bestsellers'] as $product): ?>
@@ -101,24 +103,21 @@ require ROOT . '/app/views/layouts/header.php';
 
                     <div class="product-card-img">
                         <img src="<?= BASEURL ?>/assets/images/products/<?= htmlspecialchars($product['image']) ?>"
-                             alt="<?= htmlspecialchars($product['name']) ?>"
-                             onerror="this.src='<?= BASEURL ?>/assets/images/placeholder.jpg'">
+                            alt="<?= htmlspecialchars($product['name']) ?>"
+                            onerror="this.src='<?= BASEURL ?>/assets/images/placeholder.jpg'">
                     </div>
 
                     <div class="product-card-body">
                         <h3 class="product-name"><?= htmlspecialchars($product['name']) ?></h3>
 
-                        <div class="product-price-row">
+                        <div class="product-meta">
                             <span class="price-new">$<?= number_format($product['price'], 0) ?></span>
-                            <?php if (!empty($product['old_price'])): ?>
-                            <span class="price-old">$<?= number_format($product['old_price'], 0) ?></span>
-                            <?php endif; ?>
-                        </div>
 
-                        <div class="product-rating">
-                            <span class="stars">★</span>
-                            <span><?= number_format($product['rating'], 1) ?></span>
-                            <span class="rating-count"><?= $product['review_count'] ?> review</span>
+                            <div class="product-rating">
+                                <span class="stars">★</span>
+                                <span><?= number_format($product['rating'], 1) ?></span>
+                                <span class="rating-count">(<?= $product['review_count'] ?> review)</span>
+                            </div>
                         </div>
                     </div>
 
@@ -131,10 +130,14 @@ require ROOT . '/app/views/layouts/header.php';
 
                 </div>
                 <?php endforeach; ?>
-            <?php else: ?>
-                <p style="color:#999; grid-column:1/-1; text-align:center; padding:40px 0;">Produk belum tersedia</p>
             <?php endif; ?>
         </div>
+
+        <!-- TOMBOL PANAH DI KANAN -->
+        <a href="<?= BASEURL ?>/category?cat=bestseller" class="btn-arrow-side">
+            →
+        </a>
+    </div>
 
     </div>
 </section>
