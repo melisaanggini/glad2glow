@@ -10,9 +10,11 @@ require ROOT . '/app/views/layouts/header.php';
         <div class="hero-wrapper">
             <img src="<?= BASEURL ?>/assets/images/Hero.png" alt="Hero" class="hero-img">
                 
-            <a href="<?= BASEURL ?>/category" class="btn-hero">
-                Shop Now
-            </a>
+            <div class="hero-content">
+                <a href="<?= BASEURL ?>/category" class="btn-hero">
+                    Shop Now
+                </a>
+            </div>
         </div>
     </div>
 </section>
@@ -29,27 +31,52 @@ require ROOT . '/app/views/layouts/header.php';
             Category Product
         </h2>
         <div class="category-grid-home">
-            <?php
-            // Mapping kategori → gambar (sesuai file yang ada)
-            $catImages = [
-                'Make Up'     => 'makeup.png',
-                'Cleanser'    => 'micellar.png',
-                'Serum'       => 'serum.png',
-                'Toner'       => 'toner.png',
-                'Moisturizer' => 'moisturizer.png',
-                'Body Lotion' => 'lotion.png',
-                'Combo Sets'  => 'combo.png',
-            ];
+        <?php
+        // Mapping kategori → gambar
+        $catImages = [
+            'Make Up'     => 'makeup.png',
+            'Cleanser'    => 'micellar.png',
+            'Serum'       => 'serum.png',
+            'Toner'       => 'toner.png',
+            'Moisturizer' => 'moisturizer.png',
+            'Body Lotion' => 'lotion.png',
+            'Combo Sets'  => 'combo.png',
+        ];
 
-            if (!empty($data['categories'])):
-                foreach ($data['categories'] as $cat):
-                    $imgFile = $catImages[$cat['name']] ?? 'placeholder.jpg';
-            ?>
+        // URUTAN SESUAI FIGMA
+        $order = [
+            'Make Up',
+            'Cleanser',
+            'Serum',
+            'Toner',
+            'Moisturizer',
+            'Body Lotion',
+            'Combo Sets'
+        ];
+
+        $sortedCategories = [];
+
+        if (!empty($data['categories'])) {
+
+            foreach ($order as $name) {
+                foreach ($data['categories'] as $cat) {
+                    if ($cat['name'] === $name) {
+                        $sortedCategories[] = $cat;
+                    }
+                }
+            }
+
+            foreach ($sortedCategories as $cat):
+                $imgFile = $catImages[$cat['name']] ?? 'placeholder.jpg';
+        ?>
             <a href="<?= BASEURL ?>/category?cat=<?= $cat['id'] ?>" class="category-card-home">
                 <img src="<?= BASEURL ?>/assets/images/<?= $imgFile ?>" alt="<?= htmlspecialchars($cat['name']) ?>">
                 <span><?= htmlspecialchars($cat['name']) ?></span>
             </a>
-            <?php endforeach; endif; ?>
+        <?php
+            endforeach;
+        }
+        ?>
         </div>
 
     </div>

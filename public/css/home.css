@@ -5,11 +5,15 @@
     background: #fff;  /* Background luar tetap putih */
 }
 
+.hero-section .container {
+    padding: 0; /* biar sejajar persis */
+}
+
 .hero-wrapper {
     position: relative;
     width: 100%;
-    height: 460px;
-    border-radius: 20px; /* Opsional: agar sudut gambar melengkung sesuai estetika modern */
+    height: 500px;
+    border-radius: 0; /* Opsional: agar sudut gambar melengkung sesuai estetika modern */
     overflow: hidden;
     background: #fce4ec;
 }
@@ -57,15 +61,26 @@
 }
 
 .btn-hero {
-    display: inline-block;
+    position: absolute;
+    z-index: 3;
+    left: 50px;
+    bottom: -180px; /* ⬅️ TURUN BANGET (keluar dikit dari hero, sesuai Figma style) */
+
+    display: inline-flex; /* ⬅️ FIX biar gak melebar aneh */
+    align-items: center;
+    justify-content: center;
+
     background: #E8275A;
     color: #fff;
-    padding: 12px 35px;
+    padding: 12px 28px; /* ⬅️ lebih proporsional */
     border-radius: 8px;
+
     font-size: 14px;
     font-weight: 600;
     text-decoration: none;
-    transition: 0.3s;
+    white-space: nowrap; /* ⬅️ biar "Shop Now" gak turun ke bawah */
+
+    width: auto; /* ⬅️ penting */
 }
 
 .btn-hero:hover {
@@ -107,32 +122,57 @@
 
 
 /* ================= CATEGORY SECTION ================= */
-.section-categories {
-    padding: 60px 0;
-    background: #fff;
+.section-categories .container {
+    max-width: 100%;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 }
 
-/* FIX override dari style.css */
 .section-categories .category-grid-home {
-    display: grid !important;
-    grid-template-columns: repeat(4, 1fr) !important;
-    gap: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
 
-    max-width: 800px;
+    max-width: 620px; /* ⬅️ PENTING BANGET */
     margin: 0 auto;
 }
 
-/* Center baris ke-2 */
-.section-categories .category-grid-home a:nth-child(5) {
-    grid-column: 2 / 3;
-}
-.section-categories .category-grid-home a:nth-child(6) {
-    grid-column: 3 / 4;
-}
-.section-categories .category-grid-home a:nth-child(7) {
-    grid-column: 4 / 5;
+/* CARD */
+.category-card-home {
+    width: 140px;
+    height: 140px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background: #fce4ec;
+    border-radius: 12px;
+    text-align: center;
+    transition: 0.3s;
 }
 
+.category-card-home:hover {
+    transform: translateY(-5px);
+    background: #ffd9e2;
+}
+
+/* ICON */
+.category-card-home img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    margin-bottom: 8px;
+}
+
+/* TEXT */
+.category-card-home span {
+    font-size: 13px;
+    font-weight: 500;
+    color: #111;
+}
 
 /* ================= BEST SELLER SECTION ================= */
 .section-bestseller {
@@ -140,7 +180,7 @@
 }
 .section-bestseller .container {
     background: #f3d7dc;
-    border-radius: 16px;
+    border-radius: 0;
     padding: 40px;
 }
 
@@ -228,22 +268,36 @@
 .btn-view-more:hover { background: var(--pink-hover); }
 
 
-/* ================= RESPONSIVE HOME ================= */
-@media (max-width: 1024px) {
-    .section-categories .category-grid-home {
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
+/* ================= RESPONSIVE ================= */
+
 @media (max-width: 768px) {
-    .hero { height: 320px; }
-    .hero-title { font-size: 24px; }
-    .section-categories .category-grid-home {
-        grid-template-columns: repeat(3, 1fr);
+
+    .hero-wrapper {
+        height: 350px;
     }
-    .section-bestseller .container { padding: 24px; }
-}
-@media (max-width: 480px) {
+
+    .btn-hero {
+        left: 30px;
+        bottom: -60px;
+    }
+
     .section-categories .category-grid-home {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 120px);
+    }
+
+    .category-card-home {
+        width: 120px;
+        height: 120px;
+    }
+
+    .section-bestseller .container {
+        padding: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .section-categories .category-grid-home {
+        grid-template-columns: repeat(2, 110px);
     }
 }

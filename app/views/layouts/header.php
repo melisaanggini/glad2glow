@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="<?= BASEURL ?>/css/style.css">
     <link rel="stylesheet" href="<?= BASEURL ?>/css/home.css">
     <link rel="stylesheet" href="<?= BASEURL ?>/css/category.css">
+    <link rel="stylesheet" href="<?= BASEURL ?>/css/product.css">
 </head>
 <body>
 
