@@ -65,19 +65,21 @@ $activeFilter = $data['active_filter'] ?? null;
                 <div class="cat-product-img">
                     <img src="<?= BASEURL ?>/assets/images/products/<?= htmlspecialchars($product['image']) ?>"
                          alt="<?= htmlspecialchars($product['name']) ?>"
-                         onerror="this.src='<?= BASEURL ?>/assets/images/placeholder.jpg'">
+                         onerror="this.src='<?= BASEURL ?>/assets/images/products/placeholder.png';">
                 </div>
 
                 <div class="cat-product-body">
                     <h4><?= htmlspecialchars($product['name']) ?></h4>
 
                     <div class="cat-price-row">
-                        <span class="price-new-cat">$<?= number_format($product['price'], 0) ?></span>
-                        <?php if (!empty($product['old_price'])): ?>
-                        <span class="price-old-cat">$<?= number_format($product['old_price'], 0) ?></span>
-                        <?php endif; ?>
-                        <span class="stars-cat">★ <?= number_format($product['rating'], 1) ?></span>
-                        <span class="review-cat"><?= $product['review_count'] ?> review</span>
+                        <div class="price-left">
+                            <span class="price-new-cat">$<?= number_format($product['price'], 0) ?></span>
+                        </div>
+
+                        <div class="price-right">
+                            <span class="stars-cat">★ <?= number_format($product['rating'], 1) ?></span>
+                            <span class="review-cat"><?= $product['review_count'] ?> review</span>
+                        </div>
                     </div>
                 </div>
 
