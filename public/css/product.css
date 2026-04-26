@@ -27,9 +27,11 @@
 /* C4: Kiri = gambar, Kanan = info */
 .product-detail-page { padding: 32px 0 60px; }
 
+
+
 .product-detail-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 420px 1fr;
     gap: 50px;
     align-items: start;
     margin-bottom: 48px;
@@ -37,22 +39,31 @@
 
 
 /* ===== GALLERY ===== */
-.gallery-main {
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    overflow: hidden;
-    background: #f9f9f9;
-    aspect-ratio: 1/1;
+.product-detail-page .gallery-main {
+    width: 100%;
+    height: 320px;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 16px;
+
+    background: #fff;
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+
+    padding: 16px;
 }
-.gallery-main img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    padding: 20px;
+
+.product-detail-page .gallery-main img {
+    width: auto !important;
+    height: auto !important;
+
+    max-width: 2500px !important;
+    max-height: 300px !important;
+
+    object-fit: contain !important;
+    display: block;
+    margin: 0 auto;
 }
 
 /* Dot navigator (sesuai Figma) */
@@ -74,7 +85,9 @@
 .gallery-dot:hover {
     background: var(--pink);
 }
-
+.product-gallery {
+    max-width: 350px; /* ⬅️ batasi lebar kiri */
+}
 
 /* ===== PRODUCT INFO ===== */
 /* E1: Hierarki info — nama → harga+rating → deskripsi → opsi → aksi */
@@ -375,7 +388,10 @@
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-    .product-detail-grid { grid-template-columns: 1fr; gap: 24px; }
+    .product-detail-grid {
+        grid-template-columns: 350px 1fr;
+        gap: 40px;
+    }    
     .reviews-grid { grid-template-columns: 1fr; }
     .detail-actions { flex-direction: column; }
     .tabs-header { flex-wrap: wrap; }

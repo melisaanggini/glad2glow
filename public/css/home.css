@@ -122,6 +122,9 @@
 
 
 /* ================= CATEGORY SECTION ================= */
+.section-categories {
+    margin-top: 40px;
+}
 .section-categories .container {
     max-width: 100%;
     padding-left: 0 !important;

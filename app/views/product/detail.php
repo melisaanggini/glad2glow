@@ -61,7 +61,7 @@ if (!empty($p['old_price']) && $p['old_price'] > 0) {
                 <div class="product-price-rating-row">
                     <span class="detail-price">$<?= number_format($p['price'], 2) ?></span>
                     <span class="detail-rating">
-                        <img src="<?= BASEURL ?>/assets/images/icon_bestseller.png" alt="star" style="width:16px;height:16px;object-fit:contain;vertical-align:middle;">
+                        <img src="<?= BASEURL ?>/assets/images/icon_star.png" alt="star" style="width:16px;height:16px;object-fit:contain;vertical-align:middle;">
                         <?= number_format($p['rating'], 1) ?> from 5
                     </span>
                 </div>
