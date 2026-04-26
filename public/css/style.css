@@ -18,7 +18,9 @@ ul { list-style: none; }
 :root {
     --pink:        #E8275A;
     --pink-light:  #FFF0F4;
-    --pink-hover:  #c91e49;
+    --pink-hover:    #c91e49;
+    --pink-main:    #fa7a9c;
+    --pink-hover-main: #c91e49;
     --dark:        #111111;
     --gray-100:    #F8F8F8;
     --gray-200:    #EFEFEF;

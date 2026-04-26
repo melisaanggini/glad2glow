@@ -193,7 +193,7 @@
 }
 .btn-shop-now-detail {
     display: inline-block;
-    background: var(--pink);
+    background:var(--pink-main);;
     color: #fff;
     padding: 12px 28px;
     border-radius: 6px;
@@ -201,7 +201,9 @@
     font-weight: 500;
     transition: var(--transition);
 }
-.btn-shop-now-detail:hover { background: var(--pink-hover); }
+.btn-shop-now-detail:hover { 
+    background: var(--pink-hover-main); 
+}
 
 .btn-cart-detail {
     display: flex;
@@ -382,8 +384,64 @@
     font-weight: 600;
 }
 
-/* Related Products */
-.related-section { padding: 40px 0; background: var(--gray-100); }
+/* ===== RELATED PRODUCTS ===== */
+.related-section { 
+    padding: 40px 0; 
+    background: var(--gray-100); 
+}
+
+/* CARD */
+.related-section .product-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+/* Biar ada jarak dari gambar */
+.related-section .product-card-body {
+    padding: 14px;
+}
+
+/* Nama ke tengah */
+.related-section .product-name {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+/* Harga ke tengah + lebih proper */
+.related-section .product-price-row {
+    display: flex;
+    justify-content: center; /* 🔥 ini yang bikin bener-bener tengah */
+    margin-bottom: 12px;
+}
+
+/* Footer */
+.related-section .product-card-footer {
+    display: flex;
+    justify-content: center; /* ⬅️ bikin isi footer ke tengah */
+}
+
+/* Button pink */
+.related-section .btn-secondary {
+    display: block;
+    text-align: center;
+    background: var(--pink); /* atau #fa7a9c */
+    color: #fff;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+/* Hover */
+.related-section .btn-secondary:hover {
+    background: var(--pink-hover);
+}
+
 
 
 /* ===== RESPONSIVE ===== */

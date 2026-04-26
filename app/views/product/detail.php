@@ -220,8 +220,8 @@ if (!empty($p['old_price']) && $p['old_price'] > 0) {
 <section class="related-section">
     <div class="container">
         <div class="section-header">
-            <h2>Produk Terkait</h2>
-            <a href="<?= BASEURL ?>/category">Lihat Semua →</a>
+            <h2>Related Products</h2>
+            <a href="<?= BASEURL ?>/category">View All →</a>
         </div>
         <div class="product-grid">
             <?php foreach ($data['related'] as $rel): ?>
@@ -237,8 +237,8 @@ if (!empty($p['old_price']) && $p['old_price'] > 0) {
                         <span class="price-new">$<?= number_format($rel['price'], 0) ?></span>
                     </div>
                 </div>
-                <div class="product-card-footer" style="display:block; padding:0 14px 14px;">
-                    <a href="<?= BASEURL ?>/product?id=<?= $rel['id'] ?>" class="btn-secondary" style="display:block; text-align:center;">Lihat Detail</a>
+                <div class="product-card-footer">
+                        <a href="<?= BASEURL ?>/product?id=<?= $rel['id'] ?>" class="btn-secondary" style="display:block; text-align:center;">View Details</a>
                 </div>
             </div>
             <?php endforeach; ?>
