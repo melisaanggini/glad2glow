@@ -14,7 +14,6 @@ if (!empty($p['old_price']) && $p['old_price'] > 0) {
 }
 ?>
 
-<!-- ===== BREADCRUMB (E3: Recognition > Recall) ===== -->
 <div class="breadcrumb-bar">
     <div class="container">
         <nav class="breadcrumb">
@@ -31,7 +30,6 @@ if (!empty($p['old_price']) && $p['old_price'] > 0) {
     <div class="container">
         <div class="product-detail-grid">
 
-            <!-- LEFT: GALLERY (sesuai Figma — gambar besar + 4 dot/thumb) -->
             <div class="product-gallery">
                 <div class="gallery-main">
                     <img id="mainImg"
@@ -40,7 +38,6 @@ if (!empty($p['old_price']) && $p['old_price'] > 0) {
                          onerror="this.src='<?= BASEURL ?>/assets/images/placeholder.jpg'">
                 </div>
 
-                <!-- Dot navigator (4 thumb sesuai Figma) -->
                 <div class="gallery-dots">
                     <?php for ($i = 0; $i < 4; $i++): ?>
                     <div class="gallery-dot <?= $i === 0 ? 'active' : '' ?>"
@@ -51,13 +48,8 @@ if (!empty($p['old_price']) && $p['old_price'] > 0) {
             </div>
 
 
-            <!-- RIGHT: PRODUCT INFO (E1: Above the fold — nama, harga, aksi) -->
             <div class="product-info">
-
-                <!-- Nama produk -->
                 <h1 class="product-detail-title"><?= htmlspecialchars($p['name']) ?></h1>
-
-                <!-- Harga + Rating (sejajar sesuai Figma) -->
                 <div class="product-price-rating-row">
                     <span class="detail-price">$<?= number_format($p['price'], 2) ?></span>
                     <span class="detail-rating">
@@ -66,18 +58,15 @@ if (!empty($p['old_price']) && $p['old_price'] > 0) {
                     </span>
                 </div>
 
-                <!-- Deskripsi singkat -->
                 <?php if (!empty($p['description'])): ?>
                 <p class="detail-desc"><?= htmlspecialchars($p['description']) ?></p>
                 <?php endif; ?>
 
-                <!-- SIZE PICKER -->
                 <?php if (!empty($p['size'])): ?>
                 <div class="detail-option-row">
                     <span class="detail-option-label">Size:</span>
                     <div class="size-options">
                         <?php
-                        // Untuk prototype, tampilkan beberapa ukuran
                         $sizes = ['15ml', '30ml'];
                         foreach ($sizes as $sz):
                         ?>
@@ -87,7 +76,6 @@ if (!empty($p['old_price']) && $p['old_price'] > 0) {
                 </div>
                 <?php endif; ?>
 
-                <!-- QUANTITY -->
                 <div class="detail-option-row">
                     <span class="detail-option-label">Quantity:</span>
                     <div class="qty-control">
@@ -97,7 +85,6 @@ if (!empty($p['old_price']) && $p['old_price'] > 0) {
                     </div>
                 </div>
 
-                <!-- CTA BUTTONS (E2: Aksi tersedia langsung) -->
                 <div class="detail-actions">
                     <a href="#" class="btn-shop-now-detail">Shop Now</a>
                     <a href="#" class="btn-cart-detail">
@@ -106,11 +93,9 @@ if (!empty($p['old_price']) && $p['old_price'] > 0) {
                 </div>
 
             </div>
+        </div>
 
-        </div><!-- /product-detail-grid -->
 
-
-        <!-- ===== TABS (C2: Pengelompokan informasi per section) ===== -->
         <div class="product-tabs-section">
 
             <div class="tabs-header">
@@ -121,7 +106,6 @@ if (!empty($p['old_price']) && $p['old_price'] > 0) {
                 <button class="tab-btn" onclick="openTab(event,'tab-faq')">FAQ</button>
             </div>
 
-            <!-- Description -->
             <div class="tab-content active" id="tab-desc">
                 <p><?= htmlspecialchars($p['description'] ?? 'Tidak ada deskripsi tersedia.') ?></p>
 
@@ -144,7 +128,6 @@ if (!empty($p['old_price']) && $p['old_price'] > 0) {
                 <?php endif; ?>
             </div>
 
-            <!-- Benefits -->
             <div class="tab-content" id="tab-benefits">
                 <?php if (!empty($benefits)): ?>
                 <ul class="benefits-list">
@@ -157,32 +140,27 @@ if (!empty($p['old_price']) && $p['old_price'] > 0) {
                 <?php endif; ?>
             </div>
 
-            <!-- How to Use -->
             <div class="tab-content" id="tab-usage">
                 <p><?= htmlspecialchars($howToUse ?: 'Cara penggunaan belum tersedia.') ?></p>
             </div>
 
-            <!-- Key Ingredients -->
             <div class="tab-content" id="tab-ingredients">
                 <p style="line-height:2;"><?= htmlspecialchars($ingredients ?: 'Informasi komposisi belum tersedia.') ?></p>
             </div>
 
-            <!-- FAQ -->
             <div class="tab-content" id="tab-faq">
                 <p>Belum ada FAQ untuk produk ini.</p>
             </div>
 
-        </div><!-- /tabs -->
+        </div>
 
 
-        <!-- ===== REVIEWS (sesuai Figma — 3 kolom kartu review) ===== -->
         <div class="reviews-section">
 
             <div class="reviews-header">
                 <a href="#" class="btn-write-review">Write a Review ✏️</a>
             </div>
 
-            <!-- 3 review card dummy sesuai Figma -->
             <div class="reviews-grid">
                 <?php for ($i = 0; $i < 3; $i++): ?>
                 <div class="review-card">
@@ -201,7 +179,6 @@ if (!empty($p['old_price']) && $p['old_price'] > 0) {
                 <?php endfor; ?>
             </div>
 
-            <!-- Pagination -->
             <div class="reviews-pagination">
                 <a href="#" class="page-btn active">1</a>
                 <a href="#" class="page-btn">2</a>
@@ -211,11 +188,10 @@ if (!empty($p['old_price']) && $p['old_price'] > 0) {
 
         </div>
 
-    </div><!-- /container -->
+    </div>
 </section>
 
 
-<!-- RELATED PRODUCTS -->
 <?php if (!empty($data['related'])): ?>
 <section class="related-section">
     <div class="container">
@@ -249,26 +225,22 @@ if (!empty($p['old_price']) && $p['old_price'] > 0) {
 
 
 <script>
-// Tab switcher
 function openTab(e, id) {
     document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     document.getElementById(id).classList.add('active');
     e.currentTarget.classList.add('active');
 }
-// Quantity
 function changeQty(n) {
     var inp = document.getElementById('qty');
     var val = parseInt(inp.value) + n;
     if (val >= 1) inp.value = val;
 }
-// Gallery dot
 function switchThumb(el, src) {
     document.getElementById('mainImg').src = src;
     document.querySelectorAll('.gallery-dot').forEach(d => d.classList.remove('active'));
     el.classList.add('active');
 }
-// Size button
 document.querySelectorAll('.size-btn').forEach(btn => {
     btn.addEventListener('click', function() {
         document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
