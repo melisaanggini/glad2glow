@@ -20,10 +20,7 @@ require ROOT . '/app/views/layouts/header.php';
 </section>
 
 
-<!-- ===========================
-     CATEGORY PRODUCT
-     C1: Pengelompokan ikon, E3: Recognition > Recall
-     =========================== -->
+<!-- CATEGORY PRODUCT -->
 <section class="section-categories">
     <div class="container">
 
@@ -43,7 +40,6 @@ require ROOT . '/app/views/layouts/header.php';
             'Combo Sets'  => 'combo.png',
         ];
 
-        // URUTAN SESUAI FIGMA
         $order = [
             'Make Up',
             'Cleanser',
@@ -83,10 +79,7 @@ require ROOT . '/app/views/layouts/header.php';
 </section>
 
 
-<!-- ===========================
-     BEST SELLER
-     QC1: Kartu produk lengkap (nama, harga lama/baru, rating, review)
-     =========================== -->
+<!-- BEST SELLER -->
 <section class="section-bestseller">
     <div class="container">
 
@@ -143,9 +136,7 @@ require ROOT . '/app/views/layouts/header.php';
 </section>
 
 
-<!-- ===========================
-     NEW PRODUCT
-     =========================== -->
+<!-- NEW PRODUCT -->
 <section class="section-new">
     <div class="container">
 
@@ -170,7 +161,6 @@ require ROOT . '/app/views/layouts/header.php';
                         <h3 class="product-name"><?= htmlspecialchars($product['name']) ?></h3>
                         <p class="price-new">$<?= number_format($product['price'], 0) ?></p>
 
-                        <!-- ⬇️ TAMBAH INI -->
                         <a href="<?= BASEURL ?>/product?id=<?= $product['id'] ?>" class="btn-view-more">
                             View More
                         </a>

@@ -19,7 +19,6 @@ $catImages = [
 $activeFilter = $data['active_filter'] ?? null;
 ?>
 
-<!-- HERO STRIP (sesuai Figma) -->
 <section class="category-hero">
     <div class="container">
         <h2>Find the Best Skincare Routine for Your Skin</h2>
@@ -30,17 +29,15 @@ $activeFilter = $data['active_filter'] ?? null;
 <section class="category-page">
     <div class="container">
 
-        <!-- ===== CATEGORY FILTER HORIZONTAL ===== -->
+        <!--  CATEGORY FILTER HORIZONTAL  -->
         <div class="category-horizontal">
 
-            <!-- Best Seller (tambahan sesuai Figma) -->
             <a href="<?= BASEURL ?>/category?cat=bestseller"
                class="category-item <?= ($activeFilter === 'bestseller') ? 'active' : '' ?>">
                 <img src="<?= BASEURL ?>/assets/images/icon_bestseller.png" alt="Best Seller">
                 <p>Best Seller</p>
             </a>
 
-            <!-- Kategori dari database -->
             <?php foreach ($data['categories'] as $cat): ?>
             <a href="<?= BASEURL ?>/category?cat=<?= $cat['id'] ?>"
                class="category-item <?= ($activeFilter == $cat['id']) ? 'active' : '' ?>">
@@ -53,8 +50,7 @@ $activeFilter = $data['active_filter'] ?? null;
         </div>
 
 
-        <!-- ===== PRODUCT GRID ===== -->
-        <!-- C4: Grid seimbang, QC1: Info produk lengkap -->
+        <!--  PRODUCT GRID  -->
         <?php if (!empty($data['products'])): ?>
 
         <div class="category-product-grid">
@@ -96,7 +92,6 @@ $activeFilter = $data['active_filter'] ?? null;
         </div>
 
         <?php else: ?>
-            <!-- Belum pilih kategori — tampilkan semua kategori -->
             <div class="cat-empty-hint">
                 <p>Select Category First!</p>
             </div>
