@@ -3,7 +3,6 @@
 
         <div class="footer-grid">
 
-            <!-- LEFT: Brand + Subscribe -->
             <div>
                 <img src="<?= BASEURL ?>/assets/images/logo.png" alt="Glad2Glow" class="footer-logo">
 

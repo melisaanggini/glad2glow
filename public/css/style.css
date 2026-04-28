@@ -160,7 +160,7 @@ p  { font-size: 14px; color: var(--gray-600); }
 .product-card-footer { padding: 0 14px 14px; }
 .product-card-footer .btn-primary { width: 100%; text-align: center; }
 
-/* ---- CATEGORY CARD (dipakai di home & category page) ---- */
+/* ---- CATEGORY CARD  ---- */
 .category-grid-home {
     display: grid;
     grid-template-columns: repeat(6, 1fr);

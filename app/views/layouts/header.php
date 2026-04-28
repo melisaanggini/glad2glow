@@ -20,7 +20,7 @@
             <img src="<?= BASEURL ?>/assets/images/logo.png" alt="Glad2Glow">
         </a>
 
-        <!-- NAVIGATION (E3: Kepraktisan Navigasi) -->
+        <!-- NAVIGATION -->
         <nav class="nav">
             <a href="<?= BASEURL ?>" class="<?= ($_SERVER['REQUEST_URI'] === '/glad2glow/public' || $_SERVER['REQUEST_URI'] === '/glad2glow/public/') ? 'active' : '' ?>">Home</a>
             <a href="<?= BASEURL ?>/category" class="<?= (strpos($_SERVER['REQUEST_URI'], '/category') !== false) ? 'active' : '' ?>">Shop</a>
@@ -29,7 +29,7 @@
 
         <!-- RIGHT ACTIONS -->
         <div class="header-right">
-            <!-- SEARCH (E1: Kecepatan Menemukan Informasi) -->
+            <!-- SEARCH -->
             <div class="search-box">
                 <input type="text" placeholder="Cari produk...">
                 <img src="<?= BASEURL ?>/assets/icons/icon_search.png" alt="Search" class="search-icon">
