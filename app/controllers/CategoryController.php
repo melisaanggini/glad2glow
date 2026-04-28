@@ -8,12 +8,8 @@ class CategoryController {
         $categoryModel = new Category();
         $productModel  = new Product();
 
-        // ambil semua kategori
         $data['categories'] = $categoryModel->getAll();
 
-        // =========================
-        // URUTAN UX (TETAP DIPERTAHANKAN)
-        // =========================
         $order = [
             'Make Up' => 1,
             'Cleanser' => 2,
@@ -28,21 +24,15 @@ class CategoryController {
             return ($order[$a['name']] ?? 999) <=> ($order[$b['name']] ?? 999);
         });
 
-        // =========================
-        // DEFAULT STATE
-        // =========================
         $data['selected_category'] = null;
         $data['products']          = [];
         $data['active_filter']     = null;
 
-        // =========================
-        // FILTER HANDLING
-        // =========================
         if (!empty($_GET['cat'])) {
 
             $cat = $_GET['cat'];
 
-            // ===== BEST SELLER =====
+            //  BEST SELLER 
             if ($cat === 'bestseller') {
 
                 $data['active_filter'] = 'bestseller';
@@ -54,7 +44,7 @@ class CategoryController {
                 $data['products'] = $productModel->getBestsellers(12);
 
             } 
-            // ===== CATEGORY ID =====
+            //  CATEGORY ID 
             else {
 
                 $catId = (int) $cat;
@@ -69,9 +59,6 @@ class CategoryController {
             }
         }
 
-        // =========================
-        // SAFE FALLBACK (ANTI BLANK PAGE)
-        // =========================
         if (empty($data['products'])) {
             $data['products'] = $productModel->getAll();
         }
