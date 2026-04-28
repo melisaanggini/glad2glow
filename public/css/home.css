@@ -1,24 +1,23 @@
 /* ================= HERO ================= */
 
 .hero-section {
-    padding-top: 20px; /* Jarak dari header */
-    background: #fff;  /* Background luar tetap putih */
+    padding-top: 20px; 
+    background: #fff;  
 }
 
 .hero-section .container {
-    padding: 0; /* biar sejajar persis */
+    padding: 0; 
 }
 
 .hero-wrapper {
     position: relative;
     width: 100%;
     height: 500px;
-    border-radius: 0; /* Opsional: agar sudut gambar melengkung sesuai estetika modern */
+    border-radius: 0; 
     overflow: hidden;
     background: #fce4ec;
 }
 
-/* Gambar Hero sekarang terbatas di dalam container */
 .hero-img {
     position: absolute;
     inset: 0;
@@ -28,11 +27,10 @@
     z-index: 1;
 }
 
-/* Konten teks */
 .hero-content {
     position: absolute;
     z-index: 2;
-    left: 60px; /* Jarak teks dari pinggir gambar */
+    left: 60px; 
     top: 50%;
     transform: translateY(-50%);
     max-width: 460px;
@@ -64,23 +62,23 @@
     position: absolute;
     z-index: 3;
     left: 50px;
-    bottom: -180px; /* ⬅️ TURUN BANGET (keluar dikit dari hero, sesuai Figma style) */
+    bottom: -180px; 
 
-    display: inline-flex; /* ⬅️ FIX biar gak melebar aneh */
+    display: inline-flex; 
     align-items: center;
     justify-content: center;
 
     background: #E8275A;
     color: #fff;
-    padding: 12px 28px; /* ⬅️ lebih proporsional */
+    padding: 12px 28px; 
     border-radius: 8px;
 
     font-size: 14px;
     font-weight: 600;
     text-decoration: none;
-    white-space: nowrap; /* ⬅️ biar "Shop Now" gak turun ke bawah */
+    white-space: nowrap;
 
-    width: auto; /* ⬅️ penting */
+    width: auto;
 }
 
 .btn-hero:hover {
@@ -88,7 +86,6 @@
     transform: scale(1.05);
 }
 
-/* Responsive Fix */
 @media (max-width: 768px) {
     .hero-wrapper {
         height: 350px;
@@ -102,9 +99,9 @@
 }
 
 
-/* ================= SECTION TITLE (center + garis bawah) ================= */
+/* SECTION TITLE  */
 .section-title {
-    text-align: center;       /* << judul di tengah */
+    text-align: center;
     font-size: 26px;
     font-weight: 600;
     color: var(--text);
@@ -121,7 +118,7 @@
 }
 
 
-/* ================= CATEGORY SECTION ================= */
+/*  CATEGORY SECTION  */
 .section-categories {
     margin-top: 40px;
 }
@@ -137,7 +134,7 @@
     justify-content: center;
     gap: 20px;
 
-    max-width: 620px; /* ⬅️ PENTING BANGET */
+    max-width: 620px; 
     margin: 0 auto;
 }
 
@@ -177,7 +174,7 @@
     color: #111;
 }
 
-/* ================= BEST SELLER SECTION ================= */
+/*  BEST SELLER SECTION  */
 .section-bestseller {
     padding: 60px 0;
 }
@@ -187,14 +184,12 @@
     padding: 40px;
 }
 
-/* WRAPPER GRID + BUTTON */
 .bestseller-wrapper {
     display: flex;
     align-items: center;
     gap: 16px;
 }
 
-/* BIAR GRID FLEXIBLE */
 .product-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -202,10 +197,9 @@
     flex: 1;
 }
 
-/* ================= FIX IMAGE BEST SELLER ================= */
 .product-card-img {
     width: 100%;
-    height: 180px; /* 🔥 tinggi fix biar semua sama */
+    height: 180px; 
 
     display: flex;
     align-items: center;
@@ -222,10 +216,9 @@
     width: auto;
     height: auto;
 
-    object-fit: contain; /* 🔥 ini kunci biar full produk keliatan */
+    object-fit: contain;
 }
 
-/* TOMBOL DI SAMPING */
 .btn-arrow-side {
     width: 44px;
     height: 44px;
@@ -254,7 +247,7 @@
 .product-meta {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* kiri harga, kanan rating */
+    justify-content: space-between; 
     margin-top: 8px;
 }
 
@@ -262,7 +255,7 @@
     font-size: 14px;
     font-weight: 600;
     margin-bottom: 6px;
-    text-align: center; /* ⬅️ INI YANG BARU */
+    text-align: center; 
 
 }
 
@@ -272,17 +265,16 @@
     color: var(--pink);
 }
 
-/* ⬇️ SAMAKAN DENGAN HARGA */
 .product-rating {
     display: flex;
     align-items: center;
     gap: 4px;
-    font-size: 14px; /* ⬅️ SAMA DENGAN HARGA */
+    font-size: 14px; 
     color: #555;
 }
 
 .rating-count {
-    font-size: 14px; /* ⬅️ SAMA DENGAN HARGA */
+    font-size: 14px; 
     color: #434343;
 }
 
@@ -291,7 +283,7 @@
     display: block;
     text-align: center;
 
-    background: #fa7a9c !important; /* ⬅️ PINK FIX */
+    background: #fa7a9c !important; 
     color: #fff;
 
     padding: 9px 14px;
@@ -307,22 +299,21 @@
 }
 
 
-/* ================= NEW PRODUCT SECTION ================= */
+/*  NEW PRODUCT SECTION  */
 .section-new {
-    padding: 30px 0; /* ⬅️ atas bawah lebih lega */
+    padding: 30px 0;
     background: #fff;
 }
 
-/* ⬅️ INI PENTING BANGET (SAMAKAN DENGAN HERO & BEST SELLER) */
 .section-new .container {
-    max-width: 1200px; /* ⬅️ samakan lebar */
+    max-width: 1200px; 
     margin: 0 auto;
-    padding: 0 40px; /* ⬅️ sama kayak best seller */
+    padding: 0 40px; 
 }
 
 /* JARAK KE FOOTER */
 .section-new {
-    margin-bottom: 30px; /* ⬅️ biar ga mepet footer */
+    margin-bottom: 30px; 
 }
 
 
@@ -339,29 +330,26 @@
     scroll-behavior: smooth;
 }
 
-/* card fix 5 tampil */
 .product-card-new {
-    min-width: 420px; /* 🔥 FIX: ukuran card lebih besar */
+    min-width: 420px; 
     max-width: 420px;
     flex-shrink: 0;
 }
 
-/* ================= FIX IMAGE NEW PRODUCT ================= */
 .product-card-new .product-card-img {
-    height: 320px; /* 🔥 lebih tinggi dari best seller */
+    height: 320px; 
     background: #fff;
 
-    padding: 16px; /* 🔥 INI KUNCI BIAR NGGA MEPET */
+    padding: 16px; 
     box-sizing: border-box;
 }
 
 .product-card-new .product-card-img img {
     max-width: 100%;
     max-height: 100%;
-    object-fit: contain; /* 🔥 biar full produk keliatan */
+    object-fit: contain; 
 }
 
-/* tombol panah */
 .carousel-btn {
     width: 40px;
     height: 40px;
@@ -388,11 +376,10 @@
     background: #c91e49;
 }
 
-/* New product card lebih besar, background pink */
 .product-card-new {
     background: #fce4ec !important;
-    border: 1,5px solid #f8ebeb; /* 🔥 munculin garis */
-    border-radius: 12px;    /* biar cakep */
+    border: 1,5px solid #f8ebeb; 
+    border-radius: 12px;    
 }
 
 .product-card-new .product-card-body.center {
@@ -413,8 +400,7 @@
 }
 
 
-/* ================= PRODUCT CARD FOOTER BUTTONS ================= */
-/* Tombol "Shop Now" + ikon cart berdampingan */
+/*  PRODUCT CARD FOOTER BUTTONS  */
 .product-card-footer {
     padding: 0 14px 14px;
     display: flex;
@@ -454,7 +440,6 @@
     object-fit: contain;
 }
 
-/* Tombol "View More" di new product */
 .btn-view-more {
     display: inline-block;
     background: var(--pink);
@@ -469,7 +454,7 @@
 .btn-view-more:hover { background: var(--pink-hover); }
 
 
-/* ================= RESPONSIVE ================= */
+/*  RESPONSIVE  */
 
 @media (max-width: 768px) {
 

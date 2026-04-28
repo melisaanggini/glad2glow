@@ -213,15 +213,13 @@ p  { font-size: 14px; color: var(--gray-600); }
 .page-banner h1 { color: var(--dark); margin-bottom: 6px; }
 .page-banner p { color: var(--gray-600); font-size: 15px; }
 
-/* ============================================
-   HEADER
-   ============================================ */
+/* HEADER */
 .header {
-    background: #ffffff; /* PUTIH */
+    background: #ffffff; 
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* lebih soft */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
 }
 .header-wrapper {
     display: flex;
@@ -333,16 +331,14 @@ p  { font-size: 14px; color: var(--gray-600); }
     display: flex;
     align-items: center;
     gap: 24px;
-    padding: 16px 0; /* lebih lega */
+    padding: 16px 0; 
 }
 
 
-/* ============================================
-   FOOTER (FINAL UI/UX VERSION)
-   ============================================ */
+/* FOOTER */
 
 .footer {
-    background: #ffdce8; /* soft pink */
+    background: #ffdce8;
     color: #333;
     padding: 60px 0 30px;
 }
@@ -357,8 +353,8 @@ p  { font-size: 14px; color: var(--gray-600); }
 
 /* LOGO */
 .footer-logo {
-    width: 160px;       /* ukuran ideal (bisa kamu adjust) */
-    height: auto;       /* biar tidak gepeng */
+    width: 160px; 
+    height: auto; 
     object-fit: contain;
     display: block;
     margin-bottom: 16px;
@@ -484,9 +480,7 @@ p  { font-size: 14px; color: var(--gray-600); }
     color: #555;
 }
 
-/* ============================================
-   UTILITIES
-   ============================================ */
+/* UTILITIES */
 .text-pink { color: var(--pink); }
 .text-center { text-align: center; }
 .mt-8 { margin-top: 8px; }
@@ -494,9 +488,7 @@ p  { font-size: 14px; color: var(--gray-600); }
 .empty-state { text-align: center; padding: 60px 20px; color: var(--gray-400); }
 .empty-state p { font-size: 15px; }
 
-/* ============================================
-   RESPONSIVE GLOBAL
-   ============================================ */
+/* RESPONSIVE GLOBAL */
 @media (max-width: 1024px) {
     .product-grid { grid-template-columns: repeat(3, 1fr); }
     .category-grid-home { grid-template-columns: repeat(3, 1fr); }
